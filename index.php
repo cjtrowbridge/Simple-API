@@ -138,7 +138,7 @@ function ValidateFQDN($FQDN){
     function AddResultCard(uri){
       var ID = MakeID();
       $('#output').append(`
-        <div class="card mt-10">
+        <div class="card mt-2">
           <div class="card-body">
             <h4><a href="`+uri+`">`+uri+`</a></h4>
             <pre id="results_`+ID+`">Fetching...</pre>
