@@ -26,4 +26,35 @@ switch($_REQUEST['endpoint']){
       echo $IP;
     }
     exit;
+  case 'whois':
+    /*
+      /?endpoint=whois&fqdn=google.com
+      Checks to see if the fqdn is valid, per https://stackoverflow.com/questions/3026957/how-to-validate-a-domain-name-using-regex-php#answer-16491074
+      Then runs a whois and returns the results.
+    */
+    if(ValidateFQDN($_GET['fqdn'])){
+      $FQDN = escapeshellarg($_GET['fqdn']);
+      echo shell_exec('whois "'.$FQDN.'"');
+      exit;
+    }else{
+      die('Make sure you have passed a valid FQDN into the FQDN attribute. For example: /?endpoint=whois&fqdn=google.com');
+    }
+  case 'ping':
+    /*
+      /?endpoint=whois&fqdn=google.com
+      Checks to see if the fqdn is valid, per https://stackoverflow.com/questions/3026957/how-to-validate-a-domain-name-using-regex-php#answer-16491074
+      Then pings the fqdn and returns the results.
+    */
+    if(ValidateFQDN($_GET['fqdn'])){
+      $FQDN = escapeshellarg($_GET['fqdn']);
+      echo shell_exec('ping -c 1 "'.$FQDN.'"');
+      exit;
+    }else{
+      die('Make sure you have passed a valid FQDN into the FQDN attribute. For example: /?endpoint=whois&fqdn=google.com');
+    }
+}
+
+function ValidateFQDN($FQDN){
+  $Pattern = '^(?!\-)(?:[a-zA-Z\d\-]{0,62}[a-zA-Z\d]\.){1,126}(?!\d+)[a-zA-Z\d]{1,63}$';
+  return preg_match($Pattern,$FDQN);  
 }
