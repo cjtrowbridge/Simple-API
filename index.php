@@ -98,11 +98,11 @@ function ValidateFQDN($FQDN){
               </li>
               <li>
                 <h4>Who Is?</h4>
-                <p><a href="javasrcipt:void(0);" onclick="WhoIs();>Click Here</a> to run a whois lookup from the server.</p>
+                <p><a href="javasrcipt:void(0);" onclick="WhoIs();">Click Here</a> to run a whois lookup from the server.</p>
               </li>
               <li>
                 <h4>Ping</h4>
-                <p><a href="javasrcipt:void(0);" onclick="Ping();>Click Here</a> to run a ping from the server.</p>
+                <p><a href="javasrcipt:void(0);" onclick="Ping();">Click Here</a> to run a ping from the server.</p>
               </li>
             </ul>
           </div><!--/card-body-->
