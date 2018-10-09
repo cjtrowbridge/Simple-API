@@ -107,6 +107,7 @@ function ValidateFQDN($FQDN){
             </ul>
           </div><!--/card-body-->
         </div><!--/card-->
+        <div id="output"></div>
       </div><!--/col-12-->
     </div><!--/row-->
   </div><!--/container-->
@@ -121,7 +122,9 @@ function ValidateFQDN($FQDN){
       if (fqdn == null || fqdn == ""){
         //User canceled the prompt. Do nothing.
       }else{
-        window.location.href="/?endpoint=whois&fqdn="+fqdn;
+        var uri="/?endpoint=whois&fqdn="+fqdn;
+        $('#output').append('<p>Trying to open endpoint. <a href="'+uri+'">Click Here</a> if nothing happens.</p>');
+        window.location.href=uri;
       }
     }
     function Ping(){
@@ -129,7 +132,9 @@ function ValidateFQDN($FQDN){
       if (fqdn == null || fqdn == ""){
         //User canceled the prompt. Do nothing.
       }else{
-        window.location.href="/?endpoint=whois&fqdn="+fqdn;
+        var uri = "/?endpoint=whois&fqdn="+fqdn;
+        $('#output').append('<p>Trying to open endpoint. <a href="'+uri+'">Click Here</a> if nothing happens.</p>');
+        window.location.href=uri;
       }
     }
   </script>
