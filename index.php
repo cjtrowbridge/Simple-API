@@ -123,8 +123,7 @@ function ValidateFQDN($FQDN){
         //User canceled the prompt. Do nothing.
       }else{
         var uri="./?endpoint=whois&fqdn="+fqdn;
-        $('#output').append('<p>Trying to open endpoint. <a href="'+uri+'">Click Here</a> if nothing happens.</p>');
-        window.location.href=uri;
+        AddResultCard(uri);
       }
     }
     function Ping(){
@@ -133,8 +132,7 @@ function ValidateFQDN($FQDN){
         //User canceled the prompt. Do nothing.
       }else{
         var uri = "./?endpoint=whois&fqdn="+fqdn;
-        $('#output').append('<p>Trying to open endpoint. <a href="'+uri+'">Click Here</a> if nothing happens.</p>');
-        window.location.href=uri;
+        AddResultCard(uri);
       }
     }
     function AddResultCard(uri){
