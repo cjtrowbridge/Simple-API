@@ -131,7 +131,7 @@ function ValidateFQDN($FQDN){
       if (fqdn == null || fqdn == ""){
         //User canceled the prompt. Do nothing.
       }else{
-        var uri = "./?endpoint=whois&fqdn="+fqdn;
+        var uri = "./?endpoint=ping&fqdn="+fqdn;
         AddResultCard(uri);
       }
     }
