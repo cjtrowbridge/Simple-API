@@ -141,7 +141,7 @@ function ValidateFQDN($FQDN){
         <div class="card mt-2">
           <div class="card-body">
             <h4><a href="`+uri+`">`+uri+`</a></h4>
-            <pre id="results_`+ID+`">Fetching...</pre>
+            <pre id="result_`+ID+`">Fetching...</pre>
           </div><!--/card-body-->
         </div><!--/card-->
       `);
