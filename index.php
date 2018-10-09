@@ -145,7 +145,7 @@ function ValidateFQDN($FQDN){
           </div><!--/card-body-->
         </div><!--/card-->
       `);
-      $.get(uri,function(data){
+      $.get(uri,function(data,ID){
         $("#result_"+ID).html(data);
       });
     }
