@@ -137,6 +137,27 @@ function ValidateFQDN($FQDN){
         window.location.href=uri;
       }
     }
+    function AddResultCard(uri){
+      var ID = MakeID();
+      $('#output').append(`
+        <div class="card">
+          <div class="card-body">
+            <h4><a href="`+uri+`">`+uri+`</a></h4>
+            <pre id="results_`+ID+`">Fetching...</pre>
+          </div><!--/card-body-->
+        </div><!--/card-->
+      `);
+      $.get(uri,function(data){
+        $("#result_"+ID).html(data);
+      });
+    }
+    function MakeID(){
+      var text = "";
+      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      for (var i = 0; i < 5; i++)
+       text += possible.charAt(Math.floor(Math.random() * possible.length));
+      return text;
+    }
   </script>
 </body>
 </html>
