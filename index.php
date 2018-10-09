@@ -68,3 +68,70 @@ function ValidateFQDN($FQDN){
     }
   }
 }
+
+?><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/favicon.ico">
+
+  <title>Documentation - Simple-API</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <div  class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1><a href="https://github.com/cjtrowbridge/Simple-API" target="_blank">Simple-API</a></h1>
+        <div class="card">
+          <div class="card-body">
+            <p>Here are some endpoints which are available. Some of these may be disabled depending on configuration...</p>
+            <ul>
+              <li>
+                <h4>What Is My IP?</h4>
+                <p><a href="/?endpoint=whatismyip" target="_blank">Click here</a> to find out your ip.</p>
+              </li>
+              <li>
+                <h4>Who Is?</h4>
+                <p><a href="javasrcipt:void(0);" onclick="WhoIs();>Click Here</a> to run a whois lookup from the server.</p>
+              </li>
+              <li>
+                <h4>Ping</h4>
+                <p><a href="javasrcipt:void(0);" onclick="Ping();>Click Here</a> to run a ping from the server.</p>
+              </li>
+            </ul>
+          </div><!--/card-body-->
+        </div><!--/card-->
+      </div><!--/col-12-->
+    </div><!--/row-->
+  </div><!--/container-->
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  
+  <script>
+    function WhoIs(){
+      var fqdn = prompt("Enter an FQDN to run a Whois lookup from the server.","google.com");
+      if (fqdn == null || fqdn == ""){
+        //User canceled the prompt. Do nothing.
+      }else{
+        window.location.href="/?endpoint=whois&fqdn="+fqdn;
+      }
+    }
+    function Ping(){
+      var fqdn = prompt("Enter an FQDN to run a ping from the server.", "google.com");
+      if (fqdn == null || fqdn == ""){
+        //User canceled the prompt. Do nothing.
+      }else{
+        window.location.href="/?endpoint=whois&fqdn="+fqdn;
+      }
+    }
+  </script>
+</body>
+</html>
