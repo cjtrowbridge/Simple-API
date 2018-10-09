@@ -1,15 +1,15 @@
 <?php
 
 /*
-  
+
   CJTrowbridge.com
   2018-10-09
-  
+
   Simple-API
-  
-  The purpose of this project is to illustrate a simple API deployment which provides 
+
+  The purpose of this project is to illustrate a simple API deployment which provides
   some basic, common server-side functionality while being easy to self-host.
-  
+
 */
 
 switch($_REQUEST['endpoint']){
@@ -34,9 +34,11 @@ switch($_REQUEST['endpoint']){
     */
     if(ValidateFQDN($_GET['fqdn'])){
       $FQDN = escapeshellarg($_GET['fqdn']);
-      echo shell_exec('whois "'.$FQDN.'"');
+      $Command="whois '$FQDN' ";
+      echo shell_exec($Command);
       exit;
     }else{
+var_dump(ValidateFQDN($_GET['fqdn']));
       die('Make sure you have passed a valid FQDN into the FQDN attribute. For example: /?endpoint=whois&fqdn=google.com');
     }
   case 'ping':
@@ -47,7 +49,8 @@ switch($_REQUEST['endpoint']){
     */
     if(ValidateFQDN($_GET['fqdn'])){
       $FQDN = escapeshellarg($_GET['fqdn']);
-      echo shell_exec('ping -c 1 "'.$FQDN.'"');
+      $Command= "ping -c 1 '$FQDN'";
+      echo shell_exec($Command);
       exit;
     }else{
       die('Make sure you have passed a valid FQDN into the FQDN attribute. For example: /?endpoint=whois&fqdn=google.com');
@@ -55,6 +58,13 @@ switch($_REQUEST['endpoint']){
 }
 
 function ValidateFQDN($FQDN){
-  $Pattern = '^(?!\-)(?:[a-zA-Z\d\-]{0,62}[a-zA-Z\d]\.){1,126}(?!\d+)[a-zA-Z\d]{1,63}$';
-  return preg_match($Pattern,$FDQN);  
+  if(filter_var('http://'.$FQDN, FILTER_VALIDATE_URL)){
+    return true;
+  }else{
+    if(filter_var($FQDN, FILTER_VALIDATE_URL)){
+      return true;
+    }else{
+      return false;
+    }
+  }
 }
